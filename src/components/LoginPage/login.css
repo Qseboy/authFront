@@ -1,0 +1,11 @@
+.login__buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.log__button {
+    font-size: 11px;
+    font-weight: bold;
+    color: rgb(68,68,68);
+    text-decoration: none;
+
+}
