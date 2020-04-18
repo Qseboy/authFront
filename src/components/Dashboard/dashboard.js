@@ -1,4 +1,5 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import Cookies from 'js-cookie'
 import { SimpleUser } from './simpleUser/simpleUser'
 import { CheckBox } from '../TheGeneralComponents/Checkbox/checkbox'
 import '../Dashboard/dashboard.css'
@@ -17,20 +18,19 @@ const DashBoard = (props) => {
         </tr>
     );
 
-    // logout function
+    // logout function  вінести в компонент
     const logout = () => {
+        setCurrentUser(''); //Если поставить setCurrentUser(null) то currentUser.privileges == true не пройдет потому что юзер будет null
         props.history.push('/login');
-        setCurrentUser(null);
-        console.log('logout')
     }
 
-
-    //defender route Dashboard, redirect undefined users to login
-    if (currentUser.privileges === undefined) {
-        props.history.push('/')
+    if (currentUser.privileges == undefined) {
+        props.history.push('/login');
     }
 
-    return currentUser.privileges === true ? (
+    console.log('currentUser.privileges  =' + currentUser.privileges)
+
+    return currentUser.privileges == true ? (
         <div className="parentDivDashboar">Hi {currentUser.login}
             <div>
                 <div className='users__table'>

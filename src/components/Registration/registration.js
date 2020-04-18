@@ -20,7 +20,7 @@ const Registration = (props) => {
         props.history.push('/dashboard')
     }
 
-    console.log(privileges)
+    console.log('privileges  ' + privileges)
 
     return (
         <div className="form">

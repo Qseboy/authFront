@@ -1,5 +1,6 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Route, BrowserRouter, Link, Switch } from 'react-router-dom';
+import Cookies from 'js-cookie'
 import './App.css';
 import { Navigation } from "./components/Nav/navigation";
 import { Registration } from "./components/Registration/registration"
@@ -8,12 +9,11 @@ import { DashBoard } from "./components/Dashboard/dashboard"
 
 let users = [];   //масив юзеров
 
+
 const App = (props) => {
 
   const [currentUser, setCurrentUser] = useState('')
   const [users, setUsers] = useState([])
-  // console.log(users);
-  // console.log(currentUser);
 
   return (
     <div className="App">
@@ -33,7 +33,7 @@ const App = (props) => {
           />
           <Route
             exact path="/login"
-            render={(props) => <Login users={users} {...props} setCurrentUser={setCurrentUser} />}
+            render={(props) => <Login users={users} currentUser={currentUser} {...props} setCurrentUser={setCurrentUser} />}
           />
           <Route
             exact path="/dashboard"

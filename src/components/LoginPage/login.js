@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import Cookies from 'js-cookie'
 import './login.css'
 
 
@@ -6,10 +7,12 @@ const Login = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const users = props.users;
-    console.log(1111, users);
 
+    //defender route login, when auth user try to connect. Redirect  users to dashboard
+    if (props.currentUser) {
+        props.history.push('/dashboard')
+    }
 
     let authenticationUser = () => {
         const user = users.find((element) =>
@@ -23,8 +26,6 @@ const Login = (props) => {
             alert('user not found')
         }
     }
-
-
 
     return (
         <div className="reg">
