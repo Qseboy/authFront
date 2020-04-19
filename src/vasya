@@ -1,0 +1,26 @@
+  //const [currentUser, setCurrentUser] = useState('')
+  //const [users, setUsers] = useState([])
+
+  // componentDidMount() {
+  //   debugger
+  // }
+
+  // componentDidUpdate(prevProps, prevState) {
+
+  //   if (prevState.users != this.state.users) {
+  //     debugger
+  //   }
+  // }
+
+  // setCurrentUser(user) {
+  //   this.setState({ currentUser: user })
+  // }
+
+  // setUsers(users) {
+  //   this.setState({ users });
+  // }
+
+  /*onChange(name, value){
+    this.setState({[name]: value});
+  }
+  (value) => {this.onChange('setCurrentUser', value) } */

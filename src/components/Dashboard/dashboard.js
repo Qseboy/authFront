@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
-import Cookies from 'js-cookie'
 import { SimpleUser } from './simpleUser/simpleUser'
 import { CheckBox } from '../TheGeneralComponents/Checkbox/checkbox'
 import '../Dashboard/dashboard.css'
+import Cookies from 'js-cookie'
 
 const DashBoard = (props) => {
     const { currentUser, setCurrentUser } = props;
@@ -20,17 +20,12 @@ const DashBoard = (props) => {
 
     // logout function  вінести в компонент
     const logout = () => {
+        Cookies.remove("user_1");
         setCurrentUser(''); //Если поставить setCurrentUser(null) то currentUser.privileges == true не пройдет потому что юзер будет null
         props.history.push('/login');
     }
 
-    if (currentUser.privileges == undefined) {
-        props.history.push('/login');
-    }
-
-    console.log('currentUser.privileges  =' + currentUser.privileges)
-
-    return currentUser.privileges == true ? (
+    return currentUser.privileges ? (
         <div className="parentDivDashboar">Hi {currentUser.login}
             <div>
                 <div className='users__table'>
@@ -50,7 +45,7 @@ const DashBoard = (props) => {
                 <button className='btn' onClick={logout}>Sing out</button>
             </div>
         </div >
-    ) : <SimpleUser currentUser={currentUser} />
+    ) : <SimpleUser currentUser={currentUser} logout={logout} />
 }
 
 export { DashBoard };

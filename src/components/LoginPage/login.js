@@ -18,6 +18,10 @@ const Login = (props) => {
         const user = users.find((element) =>
             element.email === email && element.password === password
         )
+
+        let setUserCookies = JSON.stringify(user);
+        Cookies.set("user_1", setUserCookies);
+
         if (user) {
             props.setCurrentUser(user);
             props.history.push('/dashboard')

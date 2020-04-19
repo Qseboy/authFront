@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import Cookies from 'js-cookie'
 import './registration.css'
 
 
@@ -17,6 +18,7 @@ const Registration = (props) => {
         let user = { login, email, password, privileges };
         props.setUsers(user)
         props.setCurrentUser(user); //For auto redirect to dashboard, after authorization
+        Cookies.set("user_1", "loginedUser");
         props.history.push('/dashboard')
     }
 
