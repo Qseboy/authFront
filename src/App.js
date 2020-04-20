@@ -28,13 +28,16 @@ class App extends React.Component {
   setUsers(users) {
     // save users to cookie
     this.setState({ users });
+
+    const setAllUsersToCookies = JSON.stringify(users);
+    Cookies.set("all_users", setAllUsersToCookies);
   }
 
-  readCookie = () => {
+  // принимает арг(назв кука),
 
+  readCurrentUserCookie = () => {
     const getCookiesAboutCurrentUser = Cookies.get('user_1')
     if (getCookiesAboutCurrentUser) {   //Чтобы не падал проект, если куков нет
-      debugger
       const currentUserCookies = JSON.parse(getCookiesAboutCurrentUser);
       console.log("currentUserCookies  " + currentUserCookies)
       if (getCookiesAboutCurrentUser) {
@@ -42,19 +45,36 @@ class App extends React.Component {
         debugger
       }
       else {
-
         console.log("Cookies false")
       }
     }
     else {
-      console.log("Cookies in not find")
+      console.log("Cookies is not find")
     }
+  }
 
+  readAllUsersCookies = () => {
+    const getAllUsersCookies = Cookies.get('all_users');
+    if (getAllUsersCookies) {
+      const allUserCookies = JSON.parse(getAllUsersCookies);
+      if (getAllUsersCookies) {
+        this.setUsers(allUserCookies)
+        debugger
+      }
+      else {
+        console.log("Cookies false")
+      }
+    }
+    else {
+      console.log("Cookies is not find")
+    }
   }
 
   componentDidMount() {
-    //read users from cookies
-    this.readCookie();
+    //read cookies
+    this.readCurrentUserCookie();
+    this.readAllUsersCookies();
+
   }
 
 

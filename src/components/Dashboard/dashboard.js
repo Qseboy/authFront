@@ -21,6 +21,7 @@ const DashBoard = (props) => {
     // logout function  вінести в компонент
     const logout = () => {
         Cookies.remove("user_1");
+        Cookies.remove("all_users");
         setCurrentUser(''); //Если поставить setCurrentUser(null) то currentUser.privileges == true не пройдет потому что юзер будет null
         props.history.push('/login');
     }

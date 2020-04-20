@@ -1,0 +1,28 @@
+const getCookie = arg => {
+const cookie = Cookies.get(arg);
+if(!cookie){
+throw new Error('there is no cookie by this name');
+}
+return cookie;
+
+
+
+
+}
+const parse = cookie => {
+try{
+const parsed = JSON.parse(cookie);
+return parsed;
+} catch(err){
+throw new Error('invalid input string');
+}
+
+
+
+const users = arg => {
+const cookie = getCookie(arg);
+const parsed = parse(cookie);
+// проверить является ли parsed массивом
+Если нет выдать ошибку
+Если да, вернуть его
+}
