@@ -19,7 +19,7 @@ const Login = (props) => {
             element.email === email && element.password === password
         )
 
-        let setUserCookies = JSON.stringify(user);
+        let setUserCookies = JSON.stringify(user); //add cookies
         Cookies.set("user_1", setUserCookies);
 
         if (user) {

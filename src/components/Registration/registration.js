@@ -18,7 +18,10 @@ const Registration = (props) => {
         let user = { login, email, password, privileges };
         props.setUsers(user)
         props.setCurrentUser(user); //For auto redirect to dashboard, after authorization
-        Cookies.set("user_1", "loginedUser");
+
+        let setUserCookies = JSON.stringify(user); //add cookies
+        Cookies.set("user_1", setUserCookies);
+
         props.history.push('/dashboard')
     }
 

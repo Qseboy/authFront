@@ -7,9 +7,6 @@ import { Registration } from "./components/Registration/registration"
 import { Login } from "./components/LoginPage/login"
 import { DashBoard } from "./components/Dashboard/dashboard"
 
-let users = [];   //масив юзеров
-
-
 class App extends React.Component {
   state = {
     currentUser: null,
@@ -29,7 +26,35 @@ class App extends React.Component {
   }
 
   setUsers(users) {
+    // save users to cookie
     this.setState({ users });
+  }
+
+  readCookie = () => {
+
+    const getCookiesAboutCurrentUser = Cookies.get('user_1')
+    if (getCookiesAboutCurrentUser) {   //Чтобы не падал проект, если куков нет
+      debugger
+      const currentUserCookies = JSON.parse(getCookiesAboutCurrentUser);
+      console.log("currentUserCookies  " + currentUserCookies)
+      if (getCookiesAboutCurrentUser) {
+        this.setCurrentUser(currentUserCookies)
+        debugger
+      }
+      else {
+
+        console.log("Cookies false")
+      }
+    }
+    else {
+      console.log("Cookies in not find")
+    }
+
+  }
+
+  componentDidMount() {
+    //read users from cookies
+    this.readCookie();
   }
 
 
